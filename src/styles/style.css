@@ -1,0 +1,13 @@
+html,body {
+    height: 100%;
+}
+#root {
+    min-height: 100%;
+    background-color: #1976d2;
+}
+.__footer__ {
+    /* opacity: .8; */
+    /* outline: 9999px; */
+    /* outline-style: solid; */
+    /* outline-color: #1976d2; */
+}
