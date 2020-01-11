@@ -10,8 +10,8 @@ const Auth = () => {
         let s = his.location.search.split('=')[1];
         if(s) {
             axios.post('/login/oauth/access_token', qs.stringify({
-                    client_id: 'c7f5f5ad65cc93ba7fa8', 
-                    client_secret: 'a336f8cce82d7b3746e8fcab6fb38509a145513a', 
+                    client_id: 'your client_id', 
+                    client_secret: 'your client_secret', 
                     code: s
             })).then((response:any)=>{
                 console.log(response);
