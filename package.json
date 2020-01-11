@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "latest",
+    "@material-ui/icons": "^4.5.1",
     "@types/axios": "^0.14.0",
     "@types/react": "latest",
     "@types/react-dom": "latest",
@@ -16,6 +17,7 @@
     "react-router": "^5.1.2",
     "react-scripts": "latest",
     "typescript": "latest",
+    "unstated-next": "^1.1.0",
     "urql": "^1.7.0"
   },
   "scripts": {

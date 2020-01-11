@@ -13,6 +13,26 @@ const convertParams = (str:string, flag?:string) => {
     return result;
 }
 
+const setCache = (key:string, value:string) => {
+    window.localStorage.setItem(key, value);
+}
+
+const getCache = (key:string) => {
+    return window.localStorage.getItem(key);
+}
+
+const removeCache = (key:string) => {
+    window.localStorage.removeItem(key);
+}
+
+const clearCache = () => {
+    window.localStorage.clear();
+}
+
 export {
-    convertParams
+    convertParams,
+    setCache,
+    getCache,
+    removeCache,
+    clearCache
 }

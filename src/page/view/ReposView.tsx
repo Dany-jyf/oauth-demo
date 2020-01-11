@@ -3,6 +3,7 @@ import { makeStyles, Theme, createStyles, List, ListItem, ListItemText, Table, T
 import { createContainer, useContainer } from 'unstated-next';
 import Axios from 'axios';
 import classes from '*.module.sass';
+import { setCache } from '../../util/util';
 
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
@@ -14,6 +15,15 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     },
     center: {
         textAlign: 'center'
+    },
+    col1: {
+        width: "20%"
+    },
+    col2: {
+        width: "60%"
+    },
+    col3: {
+        width: "20%"
     }
 }));
 
@@ -81,14 +91,6 @@ const Owner = (repos: any) => {
                     primary={owner.login}
                     secondary={
                         <React.Fragment>
-                            <Typography
-                                component="span"
-                                variant="body2"
-                                className={classes.inline}
-                                color="textPrimary"
-                            >
-                               {owner.login}
-              </Typography>
                             {owner.html_url}
                         </React.Fragment>
                     }
@@ -113,6 +115,7 @@ const ReposView = (props: { url: string, user:any }) => {
         }).then(response => {
             if (response && response.data) {
                 setList(response.data);
+                setCache(props.user.login, response.data);
             } else {
                 //window.location.href = '/';
             }
@@ -130,7 +133,7 @@ const ReposView = (props: { url: string, user:any }) => {
     }, []);
 
     const onItemClick = (index: any) => {
-        console.log(index);
+        window.location.href = window.location.origin + '/view/' + index;
     }
 
     return (
@@ -138,16 +141,16 @@ const ReposView = (props: { url: string, user:any }) => {
             {loading?(<div className={classes.center}><LinearProgress /></div>):(props.user?<List component="nav" aria-label="secondary mailbox folders" className={classes.list}>
                 <Owner owner={props.user}></Owner>
                 <ListItem button alignItems="flex-start">
-                    <ListItemText primary="name" />
-                    <ListItemText primary="url" />
-                    <ListItemText primary="watchers" />
+                    <ListItemText primary="name" className={classes.col1}/>
+                    <ListItemText primary="url"  className={classes.col2}/>
+                    <ListItemText primary="watchers"  className={classes.col3}/>
                 </ListItem>
                 {
                     list.length?list.map((item: { id: any, name?: string, html_url?: string, watchers?:number }, index) => (
                         <ListItem button alignItems="flex-start" onClick={(e) => { onItemClick(index) }} key={index}>
-                            <ListItemText primary={item.name} />
-                            <ListItemText primary={item.html_url} />
-                            <ListItemText primary={item.watchers} />
+                            <ListItemText primary={item.name}  className={classes.col1}/>
+                            <ListItemText primary={item.html_url} className={classes.col2}/>
+                            <ListItemText primary={item.watchers} className={classes.col3}/>
                         </ListItem>
                     )):(<div className={classes.center}>Sorry,Not Found!</div>)
                 }

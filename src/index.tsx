@@ -2,11 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import App from './App';
+// import './styles/style.css';
+import { ThemeProvider } from '@material-ui/core';
+import theme from './theme';
 
 ReactDOM.render(
-    <div>
+    <ThemeProvider theme={theme}>
+        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-        <App></App>
-    </div>,
+        <App />
+    </ThemeProvider>,
     document.querySelector('#root'),
 );
