@@ -1,6 +1,6 @@
-const convertParams = (str:string, flag?:string) => {
+function convertParams(str:string, flag?:string){
     interface params {
-        [key: string]: any
+        [key: string]: string
     }
     let arr = str.split(flag || '&'),
         result:params = {};
@@ -13,19 +13,19 @@ const convertParams = (str:string, flag?:string) => {
     return result;
 }
 
-const setCache = (key:string, value:string) => {
+function setCache(key:string, value:string) {
     window.localStorage.setItem(key, value);
 }
 
-const getCache = (key:string) => {
+function getCache(key:string) {
     return window.localStorage.getItem(key);
 }
 
-const removeCache = (key:string) => {
+function removeCache(key:string) {
     window.localStorage.removeItem(key);
 }
 
-const clearCache = () => {
+function clearCache() {
     window.localStorage.clear();
 }
 
